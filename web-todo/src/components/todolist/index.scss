@@ -1,0 +1,45 @@
+.list {
+  width:505px;
+  height:50px;
+  background:rgba(255,255,255,1);
+  position: relative;
+
+  .icon {
+    width: 53px;
+    height: 100%;
+    border-right:5px soldi rgba(1,148,196,1);
+    margin-right: 10px;
+  }
+
+  .icon-del {
+    border-color:rgba(219,219,219,1);
+  }
+
+  .msg {
+    color:rgba(93,93,93,1);
+    line-height:50px;
+    max-width: 380px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .msg-del {
+    color:rgba(219,219,219,1);
+    &::after {
+      display: block;
+      content: '';
+      position: absolute;
+      top: calc(50% - 25px);
+    }
+  }
+
+  .star {
+    width:24px;
+    height:24px;
+    background-color: red;
+    position: absolute;
+    right: 10px;
+    top: 0;
+  }
+}

@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  background-color: rgb(84, 92, 100);
+
+  .center-box {
+    width: 900px;
+    color: #fff;
+
+    .name {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .navItem {
+      height: 60px;
+      line-height: 60px;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+
+    .nav-active {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
