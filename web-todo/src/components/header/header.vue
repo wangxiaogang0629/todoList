@@ -3,7 +3,7 @@
     <div class="center-box flex-between">
       <div class="left flex-normal ">
         <i></i>
-        <span class="name">TODO</span>
+        <span class="name" ref="webName">TODO {{$attrs.title}}</span>
         <div class="navItem"
           :class="{'nav-active': navSelect === navItem.id }"
           v-for="navItem in navList"
@@ -44,13 +44,19 @@
         navSelect: 0,
       };
     },
+    inject: ['webTitle'],
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+        console.log('根', this.$store.state.webTitle)
+        console.log('老爹', this.webTitle)
       },
       navClick(val) {
         console.log(val)
       }
+    },
+    mounted: () => {
+      // console.log('webName', this.$refs)
     }
   }
 </script>
