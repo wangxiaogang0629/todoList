@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import 'normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/index.scss'
+import './components/footer/index.js'
 
 
 Vue.use(ElementUI);

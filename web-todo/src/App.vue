@@ -2,7 +2,10 @@
   <el-container id="app">
     <el-header><Header /></el-header>
     <el-main><router-view/></el-main>
-    <el-footer>footer</el-footer>
+    <el-footer>
+      <Footer></Footer>
+    </el-footer>
+    
   </el-container>
 </template>
 
@@ -10,7 +13,7 @@
   import Header from './components/header/header'
   export default {
     components: {
-      'Header': Header
+      'Header': Header,
     }
   }
 </script>
