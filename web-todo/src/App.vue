@@ -1,6 +1,6 @@
 <template>
   <el-container id="app">
-    <el-header><Header /></el-header>
+    <el-header><Header ref="header" title="村长喊我"/></el-header>
     <el-main><router-view/></el-main>
     <el-footer>footer</el-footer>
   </el-container>
@@ -11,6 +11,19 @@
   export default {
     components: {
       'Header': Header
+    },
+    data() {
+      return {
+        webTitle: '村长喊我来搬砖！'
+      }
+    },
+    provide() {
+      return {
+        webTitle: '村长喊我来搬砖！'
+      }
+    },
+    mounted() {
+      console.log('ref', this.$refs.header.navList)
     }
   }
 </script>
