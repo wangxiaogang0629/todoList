@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-      type="text"
+      :type="type"
       :value="value"
       @input="onInput"
       v-bind="$attrs" />
@@ -17,9 +17,9 @@
         type: String,
         default: ''
       },
-      prop: {
+      type: {
         type: String,
-        default: ''
+        default: 'text'
       }
     },
     methods: {

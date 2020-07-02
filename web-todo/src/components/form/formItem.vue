@@ -12,12 +12,16 @@
 <script>
   import Schema from 'async-validator' 
   export default {
-    inject: ['from'],
+    inject: ['form'],
     props: {
       label: {
         type: String,
         default: ''
       },
+      prop: {
+        type: String,
+        default: ''
+      }
     },
     data() {
       return {
@@ -26,20 +30,21 @@
     },
     mounted() {
       this.$on('validate', () => {
-        this.validator()
+        this.validate()
       })
     },
     methods: {
-      validator() {
-        let rules = this.from.rules
-        let val = this.from.model
+      validate() {
+        let rules = this.form.rules
+        let val = this.form.model
+        let schema = new Schema({ [this.prop]: rules[this.prop] })
 
-        let schema = new Schema({ [this.prop]: rules[this.props] })
-
-        return schema.validate({ [this.prop]: val }, (errors) => {
+        return schema.validate({ [this.prop]: val[this.prop] }, (errors) => {
 
           if (errors) {
-            console.log('err', errors)
+            this.error = errors[0].message
+          } else {
+            this.error = ''
           }
         })
 
