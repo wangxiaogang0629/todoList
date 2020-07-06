@@ -1,66 +1,68 @@
 <template>
   <div>
-    <From :model='model' :rules='rules' ref="form">
-      <FormItem label="账号" prop="username">
-        <Input v-model="model.username" placeholder="账号" />
-      </FormItem>
-      <FormItem label="密码" prop="password">
-        <Input v-model="model.password" placeholder="请输入6位密码" />
-      </FormItem>
-      <FormItem>
-        <button @click="sub">提交</button>
-      </FormItem>
-    </From>
-    
+    <WForm :model='model' :rule='rule' ref="wform">
+      <WFormItem prop="username">
+        <WInput placeholder = "请输入用户名" type = "username" v-model="model.username" />
+      </WFormItem>
+      <WFormItem prop="password">
+        <WInput placeholder = "请输入密码" type = "password" v-model="model.password" />
+      </WFormItem>
+      <WFormItem>
+        <button @click="login">登录</button>
+      </WFormItem>
+    </WForm>
   </div>
 </template>
 
 <script>
-  import From from '../../components/form/index.vue'
-  import FormItem from '../../components/form/formItem.vue'
-  import Input from '../../components/form/input.vue'
-  import Notice from '../../components/utils/notice.vue'
-  import Create from '../../utils/create.js'
+  import WInput from '../../components/form/wInput'
+  import WFormItem from '../../components/form/wFormItem'
+  import WForm from '../../components/form/wForm';
+  import WToast from '../../components/utils/wToast'
+  import Create from '../../utils/create'
   export default {
-    components: {
-      From: From,
-      FormItem: FormItem,
-      Input: Input
-    },
     data() {
       return {
         model: {
-          username: '',
+          username: 'xiaogang',
           password: ''
         },
-        rules: {
-          username: [{ required: true, msg: '请输入用户名！' }],
-          password: [{ required: true, msg: '请输入用密码！' }]
+        rule: {
+          username: {
+            required: true,
+            message: '请输入用户名！'
+          },
+          password: {
+            required: true,
+            message: '请输入密码！'
+          },
         }
       }
     },
+    components: {
+      WInput,
+      WFormItem,
+      WForm
+    },
     methods: {
-      sub() {
-        this.$refs.form.validate((isValid) => {
+      login() {
+        this.$refs.wform.validate((isValid) => {
 
-          console.log(isValid, 'notice')
+          if (isValid) {
+            console.log('校验成功！')
+          } else {
+            // alert('校验失败！')
 
-          // if( isValid ){
-          //   console.log('success')
-          // } else {
-          //   alert('校验失败')
-          // }
+            Create(WToast, {
+              title: '登录',
+              message: '校验失败！',
+              duration: 3000
+            }).show()
+          }
 
-          Create(Notice, {
-            title: '村长喊我来搬砖！',
-            message: isValid ? '校验通过' : '校验失败'
-          })
-
-          
         })
       }
     },
-    
   }
 </script>
 

@@ -1,16 +1,14 @@
 <template>
   <div>
-    <!-- lable -->
     <label v-if="label">{{ label }}</label>
     <!-- 插槽 -->
     <slot></slot>
-    <!-- 报错信息 -->
-    <div class="error" v-if="error">{{ error }}</div>
+    <p v-if="error" class="error">{{error}}</p>  
   </div>
 </template>
 
 <script>
-  import Schema from 'async-validator' 
+  import Validator from 'async-validator'
   export default {
     inject: ['form'],
     props: {
@@ -28,33 +26,33 @@
         error: ''
       }
     },
-    mounted() {
+    mounted () {
       this.$on('validate', () => {
         this.validate()
-      })
+      });
     },
+    
     methods: {
       validate() {
-        let rules = this.form.rules
         let val = this.form.model
-        let schema = new Schema({ [this.prop]: rules[this.prop] })
+        let rule = this.form.rule
 
-        return schema.validate({ [this.prop]: val[this.prop] }, (errors) => {
+        let validator = new Validator({ [this.prop]: rule[this.prop] })
 
-          if (errors) {
-            this.error = errors[0].message
+        // promise
+        return validator.validate({ [this.prop]: val[this.prop] }, err => {
+
+          if (err) {
+            this.error = err[0].message
           } else {
             this.error = ''
           }
         })
-
       }
     },
 
   }
-// async-validator
 </script>
-
 
 <style lang="scss" scoped>
   .error {

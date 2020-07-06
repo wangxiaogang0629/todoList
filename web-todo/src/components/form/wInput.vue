@@ -1,36 +1,32 @@
 <template>
   <div>
-    <input
-      :type="type"
-      :value="value"
-      @input="onInput"
-      v-bind="$attrs" />
-    <p>{{ value }}</p>
+    <input :type="type" :value="value" @input="onInput" v-bind="$attrs">
   </div>
 </template>
 
-<script> 
+<script>
   export default {
-    inheritAttrs: false,
     props: {
+      type: {
+        type: String,
+        default: 'text'
+      },
       value: {
         type: String,
         default: ''
       },
-      type: {
-        type: String,
-        default: 'text'
-      }
     },
     methods: {
       onInput(e) {
         this.$emit('input', e.target.value)
+
+        // 由于插槽不能设置事件所以使用 $parent
         this.$parent.$emit('validate')
       }
     },
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 
 </style>
