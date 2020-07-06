@@ -4,6 +4,13 @@
     <el-main><router-view/></el-main>
     <el-footer>
       <Footer></Footer>
+      <p @click="$store.commit('add')">counter: {{$store.state.counter}}</p>
+      <p @click="$store.dispatch('add')">async counter: {{$store.state.counter}}</p>
+      <p>doubleCounter: {{doubleCounter}}</p>
+
+      <p>tripleCounter: {{tripleCounter}}</p>
+
+      <p>reversedMessage: {{ reversedMessage }}</p>
     </el-footer>
     
   </el-container>
@@ -14,6 +21,20 @@
   export default {
     components: {
       'Header': Header
+    },
+    computed: {
+      doubleCounter () {
+        return this.$store.getters.doubleCounter
+      },
+
+      tripleCounter () {
+        return this.$store.getters.tripleCounter
+      },
+      // 计算属性的 getter
+      reversedMessage: function () {
+        // `this` 指向 vm 实例
+        return this.webTitle.split('').reverse().join('')
+      }
     },
     data() {
       return {
@@ -26,8 +47,17 @@
       }
     },
     mounted() {
-      console.log('ref', this.$refs.header.navList)
-    }
+      console.log('ref', this)
+
+      setInterval(() => {
+        this.name()
+      }, 1000)
+    },
+    methods: {
+      name() {
+        this.webTitle = `${new Date().getTime()}`
+      }
+    },
   }
 </script>
 
