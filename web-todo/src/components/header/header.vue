@@ -28,7 +28,7 @@
         </el-submenu>
         <el-menu-item index="3" disabled>消息中心</el-menu-item>
         <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">Github</a></el-menu-item>
-        <el-menu-item index="4">
+        <el-menu-item index="5">
           <router-link to="/login">登录</router-link>
         </el-menu-item>
       </el-menu>
