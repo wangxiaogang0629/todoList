@@ -1,7 +1,7 @@
 <template>
-  <el-header class="header flex-center">
-    <div class="center-box flex-between">
-      <div class="left flex-normal ">
+  <el-header class="header f-center">
+    <div class="center-box f-between">
+      <div class="left f-normal ">
         <i></i>
         <span class="name" ref="webName">TODO {{$attrs.title}}</span>
         <div class="navItem"

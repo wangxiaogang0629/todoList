@@ -2,26 +2,40 @@ ul, li {
   list-style: none;
 }
 
-.flex-normal {
+body, html, .appContainer{
+  width: 100%;
+  height: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+.f-normal {
   display: flex;
   align-items: center;
 }
 
-.flex-center {
+.f-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.flex-between {
+.f-between {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.flex-column {
+.f-column {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
+
 

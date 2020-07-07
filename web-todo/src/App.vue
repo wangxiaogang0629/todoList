@@ -1,19 +1,17 @@
 <template>
-  <el-container id="app">
-    <el-header><Header ref="header" title="村长喊我"/></el-header>
-    <el-main><router-view/></el-main>
-    <el-footer>
-      <Footer></Footer>
-      <p @click="$store.commit('add')">counter: {{$store.state.counter}}</p>
-      <p @click="$store.dispatch('add')">async counter: {{$store.state.counter}}</p>
-      <p>doubleCounter: {{doubleCounter}}</p>
-
-      <p>tripleCounter: {{tripleCounter}}</p>
-
-      <p>reversedMessage: {{ reversedMessage }}</p>
-    </el-footer>
-    
-  </el-container>
+  <div class="appContainer">
+    <el-container id="app" v-if="isLogin">
+      <el-header><Header ref="header" title="村长喊我"/></el-header>
+      <el-main><router-view/></el-main>
+      <el-footer>
+        <Footer></Footer>
+        <p @click="$store.commit('add')">counter: {{$store.state.counter}}</p>
+        <p @click="$store.dispatch('add')">async counter: {{$store.state.counter}}</p>
+      </el-footer>
+      
+    </el-container>
+    <router-view v-if="!isLogin" />
+  </div>
 </template>
 
 <script>
@@ -38,7 +36,8 @@
     },
     data() {
       return {
-        webTitle: '村长喊我来搬砖！'
+        webTitle: '村长喊我来搬砖！',
+        isLogin: false
       }
     },
     provide() {
@@ -47,15 +46,18 @@
       }
     },
     mounted() {
-      console.log('ref', this)
+      this.isLogin = localStorage.getItem('isLogin')
 
-      setInterval(() => {
-        this.name()
-      }, 1000)
     },
     methods: {
-      name() {
-        this.webTitle = `${new Date().getTime()}`
+     
+    },
+    watch: {
+      $route(to, from) {
+        if (to.path == '/home' && from.path == '/login') {
+          this.isLogin = true
+          localStorage.setItem('isLogin', true)
+        }
       }
     },
   }
