@@ -6,6 +6,7 @@ class Store {
     this._actions = options.actions
     this.getters = {} // 天王盖地虎
     this.computed = {}
+    this._options = options
 
     // 设置响应式数据 需要将state设置为隐藏属性 不容许外部直接修改
     this._vm = new MyVue({
@@ -19,15 +20,33 @@ class Store {
 
       this.computed[item] = options.getters[item](this.state)
       // 数据未响应 暂时还没找到原因
-      // MyVue.util.defineReactive(this.getters, item, options.getters[item](this.state))
-
-      // 响应式的设置每个属性
-      Object.defineProperty(this.getters, item, {
-        get: () => { return options.getters[item](this.state) },
-        enumerable: true // for local getters
+      MyVue.util.defineReactive.bind(this)(this.getters, item, () => {
+        return options.getters[item](this.state)
       })
+
+      // var myDefineProperty = (obj, key, val) => {
+
+      //   // 响应式的设置每个属性
+      //   Object.defineProperty(obj, key, {
+      //     get: () => {
+      //       console.log(options.getters[item](this.state), val);
+      //       return options.getters[item](this.state)
+      //     },
+      //     enumerable: true // for local getters
+      //   })
+      // }
+      // myDefineProperty(this.getters, item, options.getters[item](this.state))
+
+      // Object.defineProperty(this.getters, item, {
+      //   get: () => {
+      //     return options.getters[item](this.state)
+      //   },
+      //   enumerable: true // for local getters
+      // })
+      
     })
 
+    
   }
 
   get state() { // _data

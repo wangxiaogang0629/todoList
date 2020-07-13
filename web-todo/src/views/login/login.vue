@@ -28,14 +28,16 @@
           password: ''
         },
         rule: {
-          username: {
-            required: true,
-            message: '请输入用户名！'
-          },
-          password: {
-            required: true,
-            message: '请输入密码！'
-          },
+          username: [
+            { required: true, message: '请输入用户名！' },
+            { length: 13, message: '用户名不正确！' },
+            { defalut: '18866666666', message: '用户名不正确！' },
+          ],
+          password: [
+            { required: true, message: '请输入密码！' },
+            { length: 6, message: '密码不正确！' },
+            { defalut: '666666', message: '密码不正确！' },
+          ],
         }
       }
     },

@@ -13,11 +13,6 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
-  },
-  {
     path: '/login',
     name: 'Login',
     // route level code-splitting

@@ -7,10 +7,11 @@
         <Footer></Footer>
         <p @click="$store.commit('add')">counter: {{$store.state.counter}}</p>
         <p @click="$store.dispatch('add')">async counter: {{$store.state.counter}}</p>
+
+         <p >doubleCounter: {{doubleCounter}}</p>
       </el-footer>
-      
     </el-container>
-    <router-view v-if="!isLogin" />
+    <router-view v-if="!isLogin"></router-view>
   </div>
 </template>
 
@@ -22,6 +23,7 @@
     },
     computed: {
       doubleCounter () {
+        console.log(this.$store)
         return this.$store.getters.doubleCounter
       },
 
@@ -46,17 +48,16 @@
       }
     },
     mounted() {
-      this.isLogin = localStorage.getItem('isLogin')
-
+      this.isLogin = localStorage.getItem('isLogin') == 2
     },
     methods: {
      
     },
     watch: {
-      $route(to, from) {
-        if (to.path == '/home' && from.path == '/login') {
-          this.isLogin = true
-          localStorage.setItem('isLogin', true)
+      $route(to) {
+        if (to.path == '/login') {
+          this.isLogin = false
+          localStorage.setItem('isLogin', 1)
         }
       }
     },
