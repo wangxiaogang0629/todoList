@@ -8,7 +8,7 @@
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input type="password" v-model="ruleForm.password" placeholder="密码" />
+        <el-input type="password" v-model="ruleForm.password" placeholder="密码" maxlength="6"/>
       </el-form-item>
       <el-form-item >
         <el-button type="default" @click="submitForm('ruleForm')" class="loginBtn">登录</el-button>
@@ -33,15 +33,13 @@
             { validator: func.validatePass, trigger: 'blur', required:true, }
           ]
         },
-        isLogin: true
       };
     },
     methods: {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
-            this.isLogin = false
+            localStorage.setItem('isLogin', 2)
             this.$router.push('/home')
           } else {
             console.log('error submit!!');
@@ -49,17 +47,7 @@
           }
         });
       }
-    },
-    watch: {
-      $route (to, from) {
-        console.log(to, from)
-
-        if (to == 'home' && from == 'login') {
-          this.isLogin = false
-        }
-        
-      }
-    },
+    }
   }
 </script>
 <style lang="scss">

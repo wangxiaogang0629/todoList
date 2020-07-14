@@ -1,0 +1,16 @@
+{
+  "id": "1943195",
+  "name": "todolist",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "845786",
+      "name": "完成",
+      "font_class": "wancheng",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    }
+  ]
+}

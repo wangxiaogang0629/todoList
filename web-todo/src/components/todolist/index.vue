@@ -1,6 +1,6 @@
 <template>
-  <div class="f-normal">
-    <div class="icon">icon</div>
+  <div class="f-normal list">
+    <div class="icon"><i class="iconfont icon-wancheng"></i></div>
     <div class="msg">我的任务</div>
     <div class="star"></div>
   </div>

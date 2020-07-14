@@ -7,8 +7,18 @@
   .icon {
     width: 53px;
     height: 100%;
-    border-right:5px soldi rgba(1,148,196,1);
+    border-right:5px solid rgba(1,148,196,1);
     margin-right: 10px;
+    line-height: 50px;
+    color: #bfbfbf;
+
+    .icon-wancheng {
+      font-size: 24px;
+    }
+  }
+
+  .iconSuccess {
+    color: rgba(1,148,196,1);
   }
 
   .icon-del {
@@ -20,6 +30,8 @@
     line-height:50px;
     max-width: 380px;
     text-overflow: ellipsis;
+    font-size:20px;
+    font-family:Times-Roman,Times;
     overflow: hidden;
     position: relative;
   }

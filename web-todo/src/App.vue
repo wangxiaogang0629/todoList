@@ -5,13 +5,9 @@
       <el-main><router-view/></el-main>
       <el-footer>
         <Footer></Footer>
-        <p @click="$store.commit('add')">counter: {{$store.state.counter}}</p>
-        <p @click="$store.dispatch('add')">async counter: {{$store.state.counter}}</p>
-
-         <p >doubleCounter: {{doubleCounter}}</p>
       </el-footer>
     </el-container>
-    <router-view v-if="!isLogin"></router-view>
+    <router-view v-if="!isLogin" />
   </div>
 </template>
 
@@ -48,16 +44,29 @@
       }
     },
     mounted() {
-      this.isLogin = localStorage.getItem('isLogin') == 2
+      let isLogin = localStorage.getItem('isLogin')
+      if (isLogin == 2) {
+        this.isLogin = true
+      } else {
+        this.isLogin = false
+        this.$router.push('/login')
+      }
     },
     methods: {
      
     },
     watch: {
       $route(to) {
-        if (to.path == '/login') {
+        if (to.path !== '/login') {
+          let isLogin = localStorage.getItem('isLogin')
+          if (isLogin == 2) {
+            this.isLogin = true
+          } else {
+            this.isLogin = false
+            this.$router.push('/login')
+          }
+        } else {
           this.isLogin = false
-          localStorage.setItem('isLogin', 1)
         }
       }
     },
@@ -88,4 +97,16 @@
 .el-header {
   padding: 0 !important;
 }
+
+.el-header, .el-footer {
+    background-color: #545c64;
+    color: #fff;
+    text-align: center;
+    line-height: 60px;
+  }
+  
+  .el-main {
+    background-color: rgba(224,224,224,1);
+    text-align: center;
+  }
 </style>
