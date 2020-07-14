@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "2237871",
+      "name": "标签-01",
+      "font_class": "biaoqian-",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "4734496",
+      "name": "收藏，标签",
+      "font_class": "shoucangbiaoqian",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "12683550",
+      "name": "标记",
+      "font_class": "icon_biaoji-",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
       "icon_id": "845786",
       "name": "完成",
       "font_class": "wancheng",

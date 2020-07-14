@@ -6,15 +6,19 @@
       </div>
       <TodoList />
     </div>
-    <div class="right"></div>
+    <div class="right">
+      <AddTodo />
+    </div>
   </el-main>
 </template>
 
 <script>
   import TodoList from '../../components/todolist'
+  import AddTodo from '../../components/addTodo'
   export default {
     components: {
-      TodoList: TodoList
+      TodoList,
+      AddTodo
     },
     methods: {
       allSignSuccess() {
@@ -27,9 +31,9 @@
 <style lang="scss" scoped>
   .main {
     padding: 10px;
-    width: 900px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
     .left {
       .title {
@@ -59,6 +63,12 @@
       }
 
       
+    }
+
+    .right {
+      width:362px;
+      margin-left: 33px;
+      padding-top: 30px;
     }
   }
 
