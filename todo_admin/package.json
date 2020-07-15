@@ -1,0 +1,17 @@
+{
+  "name": "todo_admin",
+  "version": "1.0.0",
+  "description": "todoList 后台管理系统",
+  "main": "index.js",
+  "dependencies": {
+    "koa": "^2.13.0",
+    "sequelize": "^6.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node app.js"
+  },
+  "author": "KOBE",
+  "license": "ISC"
+}
