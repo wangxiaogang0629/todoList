@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import TodoList from '../../components/todolist'
+  import TodoList from 'comps/todolist'
   import AddTodo from '../../components/addTodo'
   export default {
     components: {
