@@ -32,17 +32,13 @@
           <router-link to="/login">登录</router-link>
         </el-menu-item>
       </el-menu>
-      <IconFont />
+      <Icon iconName="iconfont" />
     </div>
   </el-header>
 </template>
 
 <script>
-  import IconFont from '@/components/iconFont/index.vue'
   export default {
-    components: {
-      IconFont,
-    },
     data() {
       return {
         activeIndex: '1',
